@@ -24,6 +24,11 @@ class WebServer:
         if not os.path.exists(self.root):
             os.makedirs(self.root)
             self.create_sample_files()
+        
+        # Clear log files on startup
+        for log_file in ['server.log', 'server_summary.log', 'server_detailed.log']:
+            if os.path.exists(log_file):
+                os.remove(log_file)
             
         print(f"Web Server running on {self.host}:{self.port}")
         print(f"Serving files from: {os.path.abspath(self.root)}")
@@ -100,14 +105,19 @@ class WebServer:
                     
                     if not method:
                         response = self.generate_error_response(400, "Bad Request", keep_alive)
+                        # Log the error
+                        self.write_to_log(addr, method, path, 400, request, response)
                         self.send_response(client_socket, response)
                         break
                     
-                    # Log request
-                    self.log_request(addr, method, path, headers)
-                    
                     # Generate response
                     response = self.process_request(method, path, headers, keep_alive)
+                    
+                    # Get status code from response
+                    status_code = self.extract_status_code(response)
+                    
+                    # Write to log file
+                    self.write_to_log(addr, method, path, status_code, request, response)
                     
                     # Send response
                     self.send_response(client_socket, response)
@@ -138,6 +148,23 @@ class WebServer:
             client_socket.sendall(response.encode('utf-8'))
         else:
             client_socket.sendall(response)
+
+    def extract_status_code(self, response):
+        """Extract HTTP status code from response"""
+        try:
+            if isinstance(response, str):
+                first_line = response.split('\n')[0]
+            else:
+                # If bytes, decode first line
+                first_line = response.split(b'\n')[0].decode('utf-8', errors='ignore')
+            
+            if 'HTTP/' in first_line:
+                parts = first_line.split()
+                if len(parts) >= 2:
+                    return int(parts[1])
+        except:
+            pass
+        return 0
 
     def parse_request(self, request):
         """Parse HTTP request"""
@@ -330,23 +357,52 @@ class WebServer:
         
         return response
 
-    def log_request(self, addr, method, path, headers):
-        """Log request to file"""
+    def write_to_log(self, addr, method, path, status_code, request, response):
+        """Write complete log entry"""
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         
         try:
-            with open("server.log", "a") as log_file:
+            # Write to detailed log
+            with open("server.log", "a", encoding='utf-8') as log_file:
                 log_file.write(f"\n{'='*80}\n")
                 log_file.write(f"TIMESTAMP: {timestamp}\n")
                 log_file.write(f"CLIENT: {addr[0]}:{addr[1]}\n")
-                log_file.write(f"METHOD: {method}\n")
-                log_file.write(f"PATH: {path}\n")
-                log_file.write(f"HEADERS:\n")
-                for key, value in headers.items():
-                    log_file.write(f"  {key}: {value}\n")
+                log_file.write(f"REQUEST: {method} {path}\n")
+                log_file.write(f"STATUS: {status_code}\n")
+                log_file.write(f"{'-'*40}\n")
+                log_file.write(f"REQUEST HEADERS:\n")
+                
+                # Write request first line and headers
+                request_lines = request.split('\n')[:15]  # First 15 lines
+                for line in request_lines:
+                    if line.strip():
+                        log_file.write(f"  {line}\n")
+                
+                log_file.write(f"{'-'*40}\n")
+                log_file.write(f"RESPONSE HEADERS:\n")
+                
+                # Write response headers
+                if isinstance(response, str):
+                    response_lines = response.split('\n')[:10]
+                else:
+                    response_str = response[:1024].decode('utf-8', errors='ignore')
+                    response_lines = response_str.split('\n')[:10]
+                
+                for line in response_lines:
+                    if line.strip():
+                        log_file.write(f"  {line}\n")
+                
                 log_file.write(f"{'='*80}\n")
+            
+            # Write to summary log
+            with open("server_summary.log", "a", encoding='utf-8') as summary_file:
+                summary_file.write(f"{timestamp} | {addr[0]}:{addr[1]} | {method} {path} | Status: {status_code}\n")
+            
+            # Print to console that logging happened
+            print(f"  ✓ Logged: {method} {path} -> {status_code}")
+            
         except Exception as e:
-            print(f"Error logging: {e}")
+            print(f"  ✗ Error writing to log: {e}")
 
     def start(self):
         """Start the server"""
@@ -359,6 +415,7 @@ class WebServer:
         print(f"  Methods: GET, HEAD")
         print(f"  Connection: Persistent (keep-alive) and Non-persistent")
         print(f"{'='*70}\n")
+        print("Logging to: server.log and server_summary.log")
         print("Server started. Press Ctrl+C to stop.\n")
         
         try:

@@ -1,868 +1,105 @@
-2026-03-26 17:47:49 - None None
-2026-03-26 17:49:17 - None None
-2026-03-26 17:54:29 - GET / HTTP/1.1
-Host: localhost:8000
-Connection: keep-alive
-sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Sec-Fetch-Site: none
-Sec-Fetch-Mode: navigate
-Sec-Fetch-User: ?1
-Sec-Fetch-Dest: document
-Accept-Encoding: gzip, deflate, br, zstd
-Accept-Language: en-US,en;q=0.9,tr-TR;q=0.8,tr;q=0.7
-
-
-2026-03-26 17:55:05 - GET / HTTP/1.1
-Host: localhost:8000
-Connection: keep-alive
-sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Sec-Fetch-Site: none
-Sec-Fetch-Mode: navigate
-Sec-Fetch-User: ?1
-Sec-Fetch-Dest: document
-Accept-Encoding: gzip, deflate, br, zstd
-Accept-Language: en-US,en;q=0.9,tr-TR;q=0.8,tr;q=0.7
-
-
-2026-03-26 17:56:23 - 
-2026-03-26 18:01:42 - GET / HTTP/1.1
-Host: localhost:8000
-Connection: keep-alive
-sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "macOS"
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Sec-Fetch-Site: none
-Sec-Fetch-Mode: navigate
-Sec-Fetch-User: ?1
-Sec-Fetch-Dest: document
-Accept-Encoding: gzip, deflate, br, zstd
-Accept-Language: en-US,en;q=0.9,tr-TR;q=0.8,tr;q=0.7
-
-
-2026-03-26 18:02:47 - 
-2026-03-26 18:06:31 - 127.0.0.1:60414 - GET /
-2026-03-26 18:06:31 - 127.0.0.1:60417 - GET /
-2026-03-26 18:06:32 - 127.0.0.1:60418 - GET /
-2026-03-26 18:06:32 - 127.0.0.1:60420 - GET /
-2026-03-26 18:06:32 - 127.0.0.1:60422 - GET /
-2026-03-26 18:06:33 - 127.0.0.1:60425 - GET /
-2026-03-26 18:06:38 - 127.0.0.1:60426 - GET /
-2026-03-26 18:06:38 - 127.0.0.1:60428 - GET /
-2026-03-26 18:06:38 - 127.0.0.1:60430 - GET /
-2026-03-26 18:07:08 - 127.0.0.1:60446 - GET /
-2026-03-26 18:08:08 - 127.0.0.1:60455 - GET /
-2026-03-26 20:40:25 - 127.0.0.1:59563 - GET /
-2026-03-26 20:40:27 - 127.0.0.1:59564 - GET /
-2026-03-26 20:40:27 - 127.0.0.1:59565 - GET /
-2026-03-26 20:40:27 - 127.0.0.1:59568 - GET /
-2026-03-26 20:40:32 - 127.0.0.1:59569 - GET /
-2026-03-26 20:40:32 - 127.0.0.1:59571 - GET /
-2026-03-26 20:41:03 - 127.0.0.1:59578 - GET /
-2026-03-26 20:54:05 - 127.0.0.1:59715 - GET /
-2026-03-26 20:54:09 - 127.0.0.1:59716 - GET /
-2026-03-26 20:54:09 - 127.0.0.1:59718 - GET /
-2026-03-26 20:54:10 - 127.0.0.1:59721 - GET /
-2026-03-26 20:54:18 - 127.0.0.1:59722 - GET /
-2026-03-26 20:54:18 - 127.0.0.1:59725 - GET /
-2026-03-26 20:54:21 - 127.0.0.1:59730 - GET /
-2026-03-26 20:56:12 - 127.0.0.1:59802 - GET /
-2026-03-26 20:56:42 - 127.0.0.1:59803 - GET /
-2026-03-26 20:56:42 - 127.0.0.1:59804 - GET /
-2026-03-26 20:56:43 - 127.0.0.1:59818 - GET /
-2026-03-26 20:56:43 - 127.0.0.1:59820 - GET /
-2026-03-26 20:56:43 - 127.0.0.1:59822 - GET /
-2026-03-26 20:58:20 - Request:
-GET / HTTP/1.1
-Host: localhost:8000
-Connection: keep-alive
-Cache-Control: max-age=0
-sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "Windows"
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Sec-Fetch-Site: none
-Sec-Fetch-Mode: navigate
-Sec-Fetch-User: ?1
-Sec-Fetch-Dest: document
-Accept-Encoding: gzip, deflate, br, zstd
-Accept-Language: en-US,en;q=0.9,tr-TR;q=0.8,tr;q=0.7
-
-
---------------------------------------------------
-2026-03-26 20:58:20 - Request:
-GET /favicon.ico HTTP/1.1
-Host: localhost:8000
-Connection: keep-alive
-sec-ch-ua-platform: "Windows"
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
-sec-ch-ua-mobile: ?0
-Accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
-Sec-Fetch-Site: same-origin
-Sec-Fetch-Mode: no-cors
-Sec-Fetch-Dest: image
-Referer: http://localhost:8000/
-Accept-Encoding: gzip, deflate, br, zstd
-Accept-Language: en-US,en;q=0.9,tr-TR;q=0.8,tr;q=0.7
-
-
---------------------------------------------------
 
 ================================================================================
-TIMESTAMP: 2026-03-26 21:17:01
-CLIENT: 127.0.0.1:60042
-REQUEST #1
-----------------------------------------
-REQUEST:
-GET / HTTP/1.1
-Host: localhost:8000
-Connection: keep-alive
-Cache-Control: max-age=0
-sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "Windows"
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Sec-Fetch-Site: none
-Sec-Fetch-Mode: navigate
-Sec-Fetch-User: ?1
-Sec-Fetch-Dest: document
-Accept-Encoding: gzip, deflate, br, zstd
-Accept-Language: en-US,en;q=0.9,tr-TR;q=0.8,tr;q=0.7
-
-
-----------------------------------------
-RESPONSE:
-HTTP/1.1 200 OK
-Content-Type: text/html
-Content-Length: 1289
-Connection: keep-alive
-Keep-Alive: timeout=5, max=100
-Server: Python-HTTP-Server/1.0
-Date: Thu, 26 Mar 2026 21:17:01 GMT
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Python HTTP Server with Keep-Alive</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 40px; background: #f0f0f0; }
-        .container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        h1 { color: #333; }
-        .info { background: #e8f4f8; padding: 10px; border-radius: 4px; margin: 10px 0; }
-        .timestamp { color: #666; font-size: 12px; }
-        .stats { background: #f8f8e8; padding: 10px; border-radius: 4px; margin: 10px 0; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Welcome to the HTTP Server with Keep-Alive!</h1>
-        <div class="info">
-            <p><strong>Server:</strong> Python HTTP Server</p>
-            <p><strong>Connection:</strong> Keep-Alive</p>
-            <p><strong>Request Number:</strong> 1</p>
-            <p><strong>Time:</strong> 2026-03-26 21:17:01</p>
-        </div>
-        <div class="stats">
-            <p><strong>Request Info:</strong></p>
-            <p>Method: GET<br>
-            Path: /<br>
-            Keep-Alive: Enabled</p>
-        </div>
-        <p>This connection is being kept alive.</p>
-        <p>You can make multiple requests over the same connection!</p>
-    </div>
-</body>
-</html>
-----------------------------------------
+TIMESTAMP: 2026-03-26 23:45:55
+CLIENT: 127.0.0.1:61564
+REQUEST: GET /
 STATUS: 200
+----------------------------------------
+REQUEST HEADERS:
+  GET / HTTP/1.1
+  Host: localhost:8000
+  Connection: keep-alive
+  Cache-Control: max-age=0
+  sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+  sec-ch-ua-mobile: ?0
+  sec-ch-ua-platform: "Windows"
+  Upgrade-Insecure-Requests: 1
+  User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+  Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+  Sec-Fetch-Site: none
+  Sec-Fetch-Mode: navigate
+  Sec-Fetch-User: ?1
+  Sec-Fetch-Dest: document
+  Accept-Encoding: gzip, deflate, br, zstd
+----------------------------------------
+RESPONSE HEADERS:
+  HTTP/1.1 200 OK
+  Content-Type: text/html
+  Content-Length: 856
+  Last-Modified: Thu, 26 Mar 2026 22:41:08 GMT
+  Cache-Control: no-cache
+  Connection: keep-alive
+  Keep-Alive: timeout=5, max=100
+  Server: Python-Web-Server/1.0
+  Date: Thu, 26 Mar 2026 23:45:55 GMT
 ================================================================================
 
 ================================================================================
-TIMESTAMP: 2026-03-26 21:17:11
-CLIENT: 127.0.0.1:60050
-REQUEST #1
-----------------------------------------
-REQUEST:
-GET / HTTP/1.1
-Host: localhost:8000
-Connection: keep-alive
-sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "Windows"
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Sec-Fetch-Site: none
-Sec-Fetch-Mode: navigate
-Sec-Fetch-User: ?1
-Sec-Fetch-Dest: document
-Accept-Encoding: gzip, deflate, br, zstd
-Accept-Language: en-US,en;q=0.9,tr-TR;q=0.8,tr;q=0.7
-
-
-----------------------------------------
-RESPONSE:
-HTTP/1.1 200 OK
-Content-Type: text/html
-Content-Length: 1289
-Connection: keep-alive
-Keep-Alive: timeout=5, max=100
-Server: Python-HTTP-Server/1.0
-Date: Thu, 26 Mar 2026 21:17:11 GMT
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Python HTTP Server with Keep-Alive</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 40px; background: #f0f0f0; }
-        .container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        h1 { color: #333; }
-        .info { background: #e8f4f8; padding: 10px; border-radius: 4px; margin: 10px 0; }
-        .timestamp { color: #666; font-size: 12px; }
-        .stats { background: #f8f8e8; padding: 10px; border-radius: 4px; margin: 10px 0; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Welcome to the HTTP Server with Keep-Alive!</h1>
-        <div class="info">
-            <p><strong>Server:</strong> Python HTTP Server</p>
-            <p><strong>Connection:</strong> Keep-Alive</p>
-            <p><strong>Request Number:</strong> 1</p>
-            <p><strong>Time:</strong> 2026-03-26 21:17:11</p>
-        </div>
-        <div class="stats">
-            <p><strong>Request Info:</strong></p>
-            <p>Method: GET<br>
-            Path: /<br>
-            Keep-Alive: Enabled</p>
-        </div>
-        <p>This connection is being kept alive.</p>
-        <p>You can make multiple requests over the same connection!</p>
-    </div>
-</body>
-</html>
-----------------------------------------
-STATUS: 200
-================================================================================
-
-================================================================================
-TIMESTAMP: 2026-03-26 21:17:16
-CLIENT: 127.0.0.1:60052
-REQUEST #1
-----------------------------------------
-REQUEST:
-GET / HTTP/1.1
-Host: localhost:8000
-Connection: keep-alive
-Cache-Control: max-age=0
-sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "Windows"
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Sec-Fetch-Site: none
-Sec-Fetch-Mode: navigate
-Sec-Fetch-User: ?1
-Sec-Fetch-Dest: document
-Accept-Encoding: gzip, deflate, br, zstd
-Accept-Language: en-US,en;q=0.9,tr-TR;q=0.8,tr;q=0.7
-
-
-----------------------------------------
-RESPONSE:
-HTTP/1.1 200 OK
-Content-Type: text/html
-Content-Length: 1289
-Connection: keep-alive
-Keep-Alive: timeout=5, max=100
-Server: Python-HTTP-Server/1.0
-Date: Thu, 26 Mar 2026 21:17:16 GMT
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Python HTTP Server with Keep-Alive</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 40px; background: #f0f0f0; }
-        .container { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        h1 { color: #333; }
-        .info { background: #e8f4f8; padding: 10px; border-radius: 4px; margin: 10px 0; }
-        .timestamp { color: #666; font-size: 12px; }
-        .stats { background: #f8f8e8; padding: 10px; border-radius: 4px; margin: 10px 0; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Welcome to the HTTP Server with Keep-Alive!</h1>
-        <div class="info">
-            <p><strong>Server:</strong> Python HTTP Server</p>
-            <p><strong>Connection:</strong> Keep-Alive</p>
-            <p><strong>Request Number:</strong> 1</p>
-            <p><strong>Time:</strong> 2026-03-26 21:17:16</p>
-        </div>
-        <div class="stats">
-            <p><strong>Request Info:</strong></p>
-            <p>Method: GET<br>
-            Path: /<br>
-            Keep-Alive: Enabled</p>
-        </div>
-        <p>This connection is being kept alive.</p>
-        <p>You can make multiple requests over the same connection!</p>
-    </div>
-</body>
-</html>
-----------------------------------------
-STATUS: 200
-================================================================================
-
-================================================================================
-TIMESTAMP: 2026-03-26 21:19:54
-CLIENT: 127.0.0.1:60078
-REQUEST #1
-----------------------------------------
-REQUEST:
-GET /stats HTTP/1.1
-Host: localhost:8000
-Connection: keep-alive
-sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "Windows"
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Sec-Fetch-Site: none
-Sec-Fetch-Mode: navigate
-Sec-Fetch-User: ?1
-Sec-Fetch-Dest: document
-Accept-Encoding: gzip, deflate, br, zstd
-Accept-Language: en-US,en;q=0.9,tr-TR;q=0.8,tr;q=0.7
-
-
-----------------------------------------
-RESPONSE:
-HTTP/1.1 200 OK
-Content-Type: text/html
-Content-Length: 285
-Connection: keep-alive
-Keep-Alive: timeout=5, max=100
-Server: Python-HTTP-Server/1.0
-Date: Thu, 26 Mar 2026 21:19:54 GMT
-
-<!DOCTYPE html>
-<html>
-<head><title>Server Stats</title></head>
-<body>
-    <h1>Server Statistics</h1>
-    <p>This is request #1 on this connection</p>
-    <p>Server Time: 2026-03-26 21:19:54</p>
-    <p>Method: GET</p>
-    <p>Path: /stats</p>
-    <p>Keep-Alive: True</p>
-</body>
-</html>
-----------------------------------------
-STATUS: 200
-================================================================================
-
-================================================================================
-TIMESTAMP: 2026-03-26 21:20:10
-CLIENT: 127.0.0.1:60086
-REQUEST #1
-----------------------------------------
-REQUEST:
-GET /statsa HTTP/1.1
-Host: localhost:8000
-Connection: keep-alive
-sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
-sec-ch-ua-mobile: ?0
-sec-ch-ua-platform: "Windows"
-Upgrade-Insecure-Requests: 1
-User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-Sec-Fetch-Site: none
-Sec-Fetch-Mode: navigate
-Sec-Fetch-User: ?1
-Sec-Fetch-Dest: document
-Accept-Encoding: gzip, deflate, br, zstd
-Accept-Language: en-US,en;q=0.9,tr-TR;q=0.8,tr;q=0.7
-
-
-----------------------------------------
-RESPONSE:
-HTTP/1.1 404 Not Found
-Content-Type: text/html
-Content-Length: 259
-Connection: keep-alive
-Keep-Alive: timeout=5, max=100
-Server: Python-HTTP-Server/1.0
-Date: Thu, 26 Mar 2026 21:20:10 GMT
-
-<!DOCTYPE html>
-<html>
-<head><title>404 Not Found</title></head>
-<body>
-    <h1>404 Not Found</h1>
-    <p>The requested URL /statsa was not found on this server.</p>
-    <p>Time: 2026-03-26 21:20:10</p>
-    <hr>
-    <em>Python HTTP Server</em>
-</body>
-</html>
-----------------------------------------
+TIMESTAMP: 2026-03-26 23:45:56
+CLIENT: 127.0.0.1:61564
+REQUEST: GET /test.txt
 STATUS: 404
+----------------------------------------
+REQUEST HEADERS:
+  GET /test.txt HTTP/1.1
+  Host: localhost:8000
+  Connection: keep-alive
+  sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+  sec-ch-ua-mobile: ?0
+  sec-ch-ua-platform: "Windows"
+  Upgrade-Insecure-Requests: 1
+  User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+  Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+  Sec-Fetch-Site: same-origin
+  Sec-Fetch-Mode: navigate
+  Sec-Fetch-User: ?1
+  Sec-Fetch-Dest: document
+  Referer: http://localhost:8000/
+  Accept-Encoding: gzip, deflate, br, zstd
+----------------------------------------
+RESPONSE HEADERS:
+  HTTP/1.1 404 File Not Found
+  Content-Type: text/html
+  Content-Length: 190
+  Connection: keep-alive
+  Keep-Alive: timeout=5, max=100
+  Server: Python-Web-Server/1.0
+  Date: Thu, 26 Mar 2026 23:45:56 GMT
+  <!DOCTYPE html>
+  <html>
 ================================================================================
 
 ================================================================================
-TIMESTAMP: 2026-03-26 22:41:13
-CLIENT: 127.0.0.1:60857
-METHOD: GET
-PATH: /statsa
-HEADERS:
-  host: localhost:8000
-  connection: keep-alive
-  cache-control: max-age=0
-  sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
-  sec-ch-ua-mobile: ?0
-  sec-ch-ua-platform: "Windows"
-  upgrade-insecure-requests: 1
-  user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-  accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-  sec-fetch-site: none
-  sec-fetch-mode: navigate
-  sec-fetch-user: ?1
-  sec-fetch-dest: document
-  accept-encoding: gzip, deflate, br, zstd
-  accept-language: en-US,en;q=0.9,tr-TR;q=0.8,tr;q=0.7
-================================================================================
-
-================================================================================
-TIMESTAMP: 2026-03-26 22:41:15
-CLIENT: 127.0.0.1:60857
-METHOD: GET
-PATH: /
-HEADERS:
-  host: localhost:8000
-  connection: keep-alive
-  sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
-  sec-ch-ua-mobile: ?0
-  sec-ch-ua-platform: "Windows"
-  upgrade-insecure-requests: 1
-  user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-  accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-  sec-fetch-site: none
-  sec-fetch-mode: navigate
-  sec-fetch-user: ?1
-  sec-fetch-dest: document
-  accept-encoding: gzip, deflate, br, zstd
-  accept-language: en-US,en;q=0.9,tr-TR;q=0.8,tr;q=0.7
-================================================================================
-
-================================================================================
-TIMESTAMP: 2026-03-26 22:41:15
-CLIENT: 127.0.0.1:60858
-METHOD: GET
-PATH: /
-HEADERS:
-  host: localhost:8000
-  connection: keep-alive
-  sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
-  sec-ch-ua-mobile: ?0
-  sec-ch-ua-platform: "Windows"
-  upgrade-insecure-requests: 1
-  user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-  accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-  sec-fetch-site: none
-  sec-fetch-mode: navigate
-  sec-fetch-user: ?1
-  sec-fetch-dest: document
-  accept-encoding: gzip, deflate, br, zstd
-  accept-language: en-US,en;q=0.9,tr-TR;q=0.8,tr;q=0.7
-================================================================================
-
-================================================================================
-TIMESTAMP: 2026-03-26 22:41:15
-CLIENT: 127.0.0.1:60861
-METHOD: GET
-PATH: /
-HEADERS:
-  host: localhost:8000
-  connection: keep-alive
-  sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
-  sec-ch-ua-mobile: ?0
-  sec-ch-ua-platform: "Windows"
-  upgrade-insecure-requests: 1
-  user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-  accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-  sec-fetch-site: none
-  sec-fetch-mode: navigate
-  sec-fetch-user: ?1
-  sec-fetch-dest: document
-  accept-encoding: gzip, deflate, br, zstd
-  accept-language: en-US,en;q=0.9,tr-TR;q=0.8,tr;q=0.7
-================================================================================
-
-================================================================================
-TIMESTAMP: 2026-03-26 22:41:15
-CLIENT: 127.0.0.1:60865
-METHOD: GET
-PATH: /
-HEADERS:
-  host: localhost:8000
-  connection: keep-alive
-  sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
-  sec-ch-ua-mobile: ?0
-  sec-ch-ua-platform: "Windows"
-  upgrade-insecure-requests: 1
-  user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-  accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-  sec-fetch-site: none
-  sec-fetch-mode: navigate
-  sec-fetch-user: ?1
-  sec-fetch-dest: document
-  accept-encoding: gzip, deflate, br, zstd
-  accept-language: en-US,en;q=0.9,tr-TR;q=0.8,tr;q=0.7
-================================================================================
-
-================================================================================
-TIMESTAMP: 2026-03-26 22:41:16
-CLIENT: 127.0.0.1:60866
-METHOD: GET
-PATH: /
-HEADERS:
-  host: localhost:8000
-  connection: keep-alive
-  cache-control: max-age=0
-  sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
-  sec-ch-ua-mobile: ?0
-  sec-ch-ua-platform: "Windows"
-  upgrade-insecure-requests: 1
-  user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-  accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-  sec-fetch-site: none
-  sec-fetch-mode: navigate
-  sec-fetch-user: ?1
-  sec-fetch-dest: document
-  accept-encoding: gzip, deflate, br, zstd
-  accept-language: en-US,en;q=0.9,tr-TR;q=0.8,tr;q=0.7
-================================================================================
-
-================================================================================
-TIMESTAMP: 2026-03-26 22:41:17
-CLIENT: 127.0.0.1:60868
-METHOD: GET
-PATH: /
-HEADERS:
-  host: localhost:8000
-  connection: keep-alive
-  cache-control: max-age=0
-  sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
-  sec-ch-ua-mobile: ?0
-  sec-ch-ua-platform: "Windows"
-  upgrade-insecure-requests: 1
-  user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-  accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-  sec-fetch-site: none
-  sec-fetch-mode: navigate
-  sec-fetch-user: ?1
-  sec-fetch-dest: document
-  accept-encoding: gzip, deflate, br, zstd
-  accept-language: en-US,en;q=0.9,tr-TR;q=0.8,tr;q=0.7
-================================================================================
-
-================================================================================
-TIMESTAMP: 2026-03-26 22:41:22
-CLIENT: 127.0.0.1:60872
-METHOD: GET
-PATH: /
-HEADERS:
-  host: localhost:8000
-  connection: keep-alive
-  cache-control: max-age=0
-  sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
-  sec-ch-ua-mobile: ?0
-  sec-ch-ua-platform: "Windows"
-  upgrade-insecure-requests: 1
-  user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-  accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-  sec-fetch-site: none
-  sec-fetch-mode: navigate
-  sec-fetch-user: ?1
-  sec-fetch-dest: document
-  accept-encoding: gzip, deflate, br, zstd
-  accept-language: en-US,en;q=0.9,tr-TR;q=0.8,tr;q=0.7
-================================================================================
-
-================================================================================
-TIMESTAMP: 2026-03-26 22:45:19
-CLIENT: 127.0.0.1:60906
-METHOD: GET
-PATH: /
-HEADERS:
-  host: localhost:8000
-  connection: keep-alive
-  cache-control: max-age=0
-  sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
-  sec-ch-ua-mobile: ?0
-  sec-ch-ua-platform: "Windows"
-  upgrade-insecure-requests: 1
-  user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-  accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-  sec-fetch-site: none
-  sec-fetch-mode: navigate
-  sec-fetch-user: ?1
-  sec-fetch-dest: document
-  accept-encoding: gzip, deflate, br, zstd
-  accept-language: en-US,en;q=0.9,tr-TR;q=0.8,tr;q=0.7
-================================================================================
-
-================================================================================
-TIMESTAMP: 2026-03-26 22:45:49
-CLIENT: 127.0.0.1:60916
-METHOD: GET
-PATH: /
-HEADERS:
-  host: localhost:8000
-  connection: keep-alive
-  cache-control: max-age=0
-  sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
-  sec-ch-ua-mobile: ?0
-  sec-ch-ua-platform: "Windows"
-  upgrade-insecure-requests: 1
-  user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-  accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-  sec-fetch-site: none
-  sec-fetch-mode: navigate
-  sec-fetch-user: ?1
-  sec-fetch-dest: document
-  accept-encoding: gzip, deflate, br, zstd
-  accept-language: en-US,en;q=0.9,tr-TR;q=0.8,tr;q=0.7
-================================================================================
-
-================================================================================
-TIMESTAMP: 2026-03-26 22:46:50
-CLIENT: 127.0.0.1:60924
-METHOD: GET
-PATH: /
-HEADERS:
-  host: localhost:8000
-  connection: keep-alive
-  cache-control: max-age=0
-  sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
-  sec-ch-ua-mobile: ?0
-  sec-ch-ua-platform: "Windows"
-  upgrade-insecure-requests: 1
-  user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-  accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-  sec-fetch-site: none
-  sec-fetch-mode: navigate
-  sec-fetch-user: ?1
-  sec-fetch-dest: document
-  accept-encoding: gzip, deflate, br, zstd
-  accept-language: en-US,en;q=0.9,tr-TR;q=0.8,tr;q=0.7
-================================================================================
-
-================================================================================
-TIMESTAMP: 2026-03-26 22:52:09
-CLIENT: 127.0.0.1:60960
-METHOD: GET
-PATH: /
-HEADERS:
-  host: localhost:8000
-  connection: keep-alive
-  cache-control: max-age=0
-  sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
-  sec-ch-ua-mobile: ?0
-  sec-ch-ua-platform: "Windows"
-  upgrade-insecure-requests: 1
-  user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-  accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-  sec-fetch-site: none
-  sec-fetch-mode: navigate
-  sec-fetch-user: ?1
-  sec-fetch-dest: document
-  accept-encoding: gzip, deflate, br, zstd
-  accept-language: en-US,en;q=0.9,tr-TR;q=0.8,tr;q=0.7
-================================================================================
-
-================================================================================
-TIMESTAMP: 2026-03-26 22:52:12
-CLIENT: 127.0.0.1:60960
-METHOD: GET
-PATH: /test.txt
-HEADERS:
-  host: localhost:8000
-  connection: keep-alive
-  sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
-  sec-ch-ua-mobile: ?0
-  sec-ch-ua-platform: "Windows"
-  upgrade-insecure-requests: 1
-  user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-  accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-  sec-fetch-site: same-origin
-  sec-fetch-mode: navigate
-  sec-fetch-user: ?1
-  sec-fetch-dest: document
-  referer: http://localhost:8000/
-  accept-encoding: gzip, deflate, br, zstd
-  accept-language: en-US,en;q=0.9,tr-TR;q=0.8,tr;q=0.7
-================================================================================
-
-================================================================================
-TIMESTAMP: 2026-03-26 22:52:14
-CLIENT: 127.0.0.1:60960
-METHOD: GET
-PATH: /sample.jpg
-HEADERS:
-  host: localhost:8000
-  connection: keep-alive
-  sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
-  sec-ch-ua-mobile: ?0
-  sec-ch-ua-platform: "Windows"
-  upgrade-insecure-requests: 1
-  user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-  accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-  sec-fetch-site: same-origin
-  sec-fetch-mode: navigate
-  sec-fetch-user: ?1
-  sec-fetch-dest: document
-  referer: http://localhost:8000/
-  accept-encoding: gzip, deflate, br, zstd
-  accept-language: en-US,en;q=0.9,tr-TR;q=0.8,tr;q=0.7
-================================================================================
-
-================================================================================
-TIMESTAMP: 2026-03-26 22:52:31
-CLIENT: 127.0.0.1:60973
-METHOD: GET
-PATH: /
-HEADERS:
-  host: localhost:8000
-  connection: keep-alive
-  cache-control: max-age=0
-  sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
-  sec-ch-ua-mobile: ?0
-  sec-ch-ua-platform: "Windows"
-  upgrade-insecure-requests: 1
-  user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-  accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-  sec-fetch-site: none
-  sec-fetch-mode: navigate
-  sec-fetch-user: ?1
-  sec-fetch-dest: document
-  accept-encoding: gzip, deflate, br, zstd
-  accept-language: en-US,en;q=0.9,tr-TR;q=0.8,tr;q=0.7
-  if-modified-since: Thu, 26 Mar 2026 22:41:08 GMT
-================================================================================
-
-================================================================================
-TIMESTAMP: 2026-03-26 22:52:41
-CLIENT: 127.0.0.1:60980
-METHOD: GET
-PATH: /
-HEADERS:
-  host: localhost:8000
-  connection: keep-alive
-  cache-control: max-age=0
-  sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
-  sec-ch-ua-mobile: ?0
-  sec-ch-ua-platform: "Windows"
-  upgrade-insecure-requests: 1
-  user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-  accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-  sec-fetch-site: none
-  sec-fetch-mode: navigate
-  sec-fetch-user: ?1
-  sec-fetch-dest: document
-  accept-encoding: gzip, deflate, br, zstd
-  accept-language: en-US,en;q=0.9,tr-TR;q=0.8,tr;q=0.7
-  if-modified-since: Thu, 26 Mar 2026 22:41:08 GMT
-================================================================================
-
-================================================================================
-TIMESTAMP: 2026-03-26 23:08:08
-CLIENT: 127.0.0.1:61154
-METHOD: GET
-PATH: /sample.jpg
-HEADERS:
-  host: localhost:8000
-  connection: keep-alive
-  sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
-  sec-ch-ua-mobile: ?0
-  sec-ch-ua-platform: "Windows"
-  upgrade-insecure-requests: 1
-  user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-  accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-  sec-fetch-site: same-origin
-  sec-fetch-mode: navigate
-  sec-fetch-user: ?1
-  sec-fetch-dest: document
-  referer: http://localhost:8000/
-  accept-encoding: gzip, deflate, br, zstd
-  accept-language: en-US,en;q=0.9,tr-TR;q=0.8,tr;q=0.7
-================================================================================
-
-================================================================================
-TIMESTAMP: 2026-03-26 23:08:10
-CLIENT: 127.0.0.1:61154
-METHOD: GET
-PATH: /test.txt
-HEADERS:
-  host: localhost:8000
-  connection: keep-alive
-  sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
-  sec-ch-ua-mobile: ?0
-  sec-ch-ua-platform: "Windows"
-  upgrade-insecure-requests: 1
-  user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-  accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-  sec-fetch-site: same-origin
-  sec-fetch-mode: navigate
-  sec-fetch-user: ?1
-  sec-fetch-dest: document
-  referer: http://localhost:8000/
-  accept-encoding: gzip, deflate, br, zstd
-  accept-language: en-US,en;q=0.9,tr-TR;q=0.8,tr;q=0.7
-================================================================================
-
-================================================================================
-TIMESTAMP: 2026-03-26 23:09:17
-CLIENT: 127.0.0.1:61174
-METHOD: GET
-PATH: /test.txt
-HEADERS:
-  host: localhost:8000
-  connection: keep-alive
-  sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
-  sec-ch-ua-mobile: ?0
-  sec-ch-ua-platform: "Windows"
-  upgrade-insecure-requests: 1
-  user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-  accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-  sec-fetch-site: same-origin
-  sec-fetch-mode: navigate
-  sec-fetch-user: ?1
-  sec-fetch-dest: document
-  referer: http://localhost:8000/
-  accept-encoding: gzip, deflate, br, zstd
-  accept-language: en-US,en;q=0.9,tr-TR;q=0.8,tr;q=0.7
+TIMESTAMP: 2026-03-26 23:46:55
+CLIENT: 127.0.0.1:61577
+REQUEST: GET /test.txt
+STATUS: 404
+----------------------------------------
+REQUEST HEADERS:
+  GET /test.txt HTTP/1.1
+  Host: localhost:8000
+  Connection: keep-alive
+  sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
+  sec-ch-ua-mobile: ?0
+  sec-ch-ua-platform: "Windows"
+  Upgrade-Insecure-Requests: 1
+  User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
+  Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+  Sec-Fetch-Site: same-origin
+  Sec-Fetch-Mode: navigate
+  Sec-Fetch-User: ?1
+  Sec-Fetch-Dest: document
+  Referer: http://localhost:8000/
+  Accept-Encoding: gzip, deflate, br, zstd
+----------------------------------------
+RESPONSE HEADERS:
+  HTTP/1.1 404 File Not Found
+  Content-Type: text/html
+  Content-Length: 190
+  Connection: keep-alive
+  Keep-Alive: timeout=5, max=100
+  Server: Python-Web-Server/1.0
+  Date: Thu, 26 Mar 2026 23:46:55 GMT
+  <!DOCTYPE html>
+  <html>
 ================================================================================
