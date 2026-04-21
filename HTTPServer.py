@@ -1,3 +1,22 @@
+#!/usr/bin/env python3
+"""
+Multi-threaded HTTP/1.1 Web Server
+COMP2322 Computer Networking Project
+
+A compliant web server that supports:
+- GET and HEAD methods for text, HTML, and image files
+- Persistent (keep-alive) and non-persistent (close) connections
+- Status codes: 200, 400, 403, 404, 304
+- Conditional requests with Last-Modified / If-Modified-Since
+- Thread‑per‑client concurrency model
+- Detailed logging of all requests
+
+Usage:
+    python webserver.py
+
+The server listens on 0.0.0.0:8080 and serves files from the 'www' directory.
+"""
+
 import socket as s
 import threading as t
 from datetime import datetime
@@ -5,436 +24,330 @@ import os
 import mimetypes
 import time
 from urllib.parse import unquote
+import email.utils
+import struct
 
 SERVER_HOST = '0.0.0.0'
-SERVER_PORT = 8000
-WEB_ROOT = 'www'  # Directory for web files
+SERVER_PORT = 8080
+WEB_ROOT = 'www'
+
 
 class WebServer:
+    """
+    A multi‑threaded HTTP/1.1 web server.
+    Each client connection is handled in a separate thread.
+    """
+
     def __init__(self, host, port, root='www'):
+        """
+        _summary_: Initialise the web server, create listening socket,
+                   set up document root, and create sample files if needed.
+
+        _param_: host (str): IP address to bind to (use '0.0.0.0' for all interfaces).
+        _param_: port (int): TCP port number (e.g., 8080).
+        _param_: root (str): Relative or absolute path to the document root.
+        _return_: None
+        """
         self.host = host
         self.port = port
-        self.root = root
+        self.root = os.path.abspath(root)
+
         self.server_socket = s.socket(s.AF_INET, s.SOCK_STREAM)
         self.server_socket.setsockopt(s.SOL_SOCKET, s.SO_REUSEADDR, 1)
         self.server_socket.bind((self.host, self.port))
         self.server_socket.listen(10)
-        
-        # Create web root directory if it doesn't exist
+
         if not os.path.exists(self.root):
             os.makedirs(self.root)
-            self.create_sample_files()
-        
-        # Clear log files on startup
-        for log_file in ['server.log', 'server_summary.log', 'server_detailed.log']:
-            if os.path.exists(log_file):
-                os.remove(log_file)
-            
-        print(f"Web Server running on {self.host}:{self.port}")
-        print(f"Serving files from: {os.path.abspath(self.root)}")
+            self._create_sample_files()
 
-    def create_sample_files(self):
-        """Create sample files for testing"""
-        # Create sample HTML file
-        with open(os.path.join(self.root, 'index.html'), 'w') as f:
-            f.write("""<!DOCTYPE html>
-<html>
-<head>
-    <title>Welcome to Python Web Server</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 40px; background: #f0f0f0; }
-        .container { background: white; padding: 20px; border-radius: 8px; }
-        h1 { color: #333; }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Welcome to the Python Web Server!</h1>
-        <p>This is a multi-threaded web server supporting:</p>
-        <ul>
-            <li>GET and HEAD methods</li>
-            <li>Persistent and non-persistent connections</li>
-            <li>Last-Modified and If-Modified-Since headers</li>
-            <li>Multiple response status codes</li>
-        </ul>
-        <p><a href="/test.txt">Test Text File</a></p>
-        <p><a href="/sample.jpg">Sample Image</a></p>
-    </div>
-</body>
-</html>""")
-        
-        # Create sample text file
-        with open(os.path.join(self.root, 'test.txt'), 'w') as f:
-            f.write("This is a test text file.\nCreated: " + datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
-        
-        # Create sample image file (simple 1x1 pixel JPEG)
-        with open(os.path.join(self.root, 'sample.jpg'), 'wb') as f:
-            # Minimal valid JPEG
-            f.write(b'\xff\xd8\xff\xe0\x00\x10JFIF\x00\x01\x01\x00\x00\x01\x00\x01\x00\x00\xff\xdb\x00C\x00\x03\x02\x02\x02\x02\x02\x03\x02\x02\x02\x03\x03\x03\x03\x04\x06\x04\x04\x04\x04\x04\x08\x06\x06\x05\x06\t\x08\n\n\x08\t\n\x0c\x10\x0c\x0c\x0c\x0c\x0c\x18\x0f\x12\x15\x14\x11\x0f\x12\x1a\x16\x12\x13\x13\x15\x1c\x1a\x1d\x1d\x1d\x1c\x1a\x1c\x1d\x1e\x1f!%&$# \x1f\x1f#&\'\"\x1f\x1f\x1f\xff\xc0\x00\x0b\x08\x00\x01\x00\x01\x01\x01\x11\x00\xff\xc4\x00\x14\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xc4\x00\x14\x10\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\xff\xda\x00\x0c\x03\x01\x00\x02\x11\x03\x11\x00?\x00\x00\x00\x00\xff\xd9')
-        
-        # Create a file with future date for testing 304
-        future_time = time.time() + 86400  # 1 day in future
-        future_file = os.path.join(self.root, 'future.txt')
-        with open(future_file, 'w') as f:
-            f.write("This file has a future modification date for testing.")
-        os.utime(future_file, (future_time, future_time))
+        with open("server.log", "w") as f:
+            f.write(f"Server started at {datetime.now()}\n\n")
 
-    def handle_client(self, client_socket, addr):
-        """Handle individual client connections"""
-        print(f"\n[+] Connection from {addr}")
-        
-        try:
-            client_socket.settimeout(5)
-            request_count = 0
-            
-            while True:
-                try:
-                    # Read request
-                    request_data = client_socket.recv(4096)
-                    if not request_data:
-                        break
-                    
-                    request = request_data.decode('utf-8', errors='ignore')
-                    request_count += 1
-                    
-                    print(f"\n--- Request #{request_count} from {addr} ---")
-                    print(request.split('\n')[0])  # Print first line only
-                    
-                    # Parse request
-                    method, path, headers, keep_alive = self.parse_request(request)
-                    
-                    if not method:
-                        response = self.generate_error_response(400, "Bad Request", keep_alive)
-                        # Log the error
-                        self.write_to_log(addr, method, path, 400, request, response)
-                        self.send_response(client_socket, response)
-                        break
-                    
-                    # Generate response
-                    response = self.process_request(method, path, headers, keep_alive)
-                    
-                    # Get status code from response
-                    status_code = self.extract_status_code(response)
-                    
-                    # Write to log file
-                    self.write_to_log(addr, method, path, status_code, request, response)
-                    
-                    # Send response
-                    self.send_response(client_socket, response)
-                    
-                    # Break if connection should close
-                    if not keep_alive:
-                        print(f"[-] Closing connection with {addr} (non-persistent)")
-                        break
-                    
-                except s.timeout:
-                    print(f"[-] Timeout for {addr}")
-                    break
-                except Exception as e:
-                    print(f"[!] Error: {e}")
-                    import traceback
-                    traceback.print_exc()
-                    break
-                    
-        except Exception as e:
-            print(f"[!] Client error: {e}")
-        finally:
-            client_socket.close()
-            print(f"[-] Closed connection with {addr} (processed {request_count} requests)")
-
-    def send_response(self, client_socket, response):
-        """Send response (handles both string and bytes)"""
-        if isinstance(response, str):
-            client_socket.sendall(response.encode('utf-8'))
-        else:
-            client_socket.sendall(response)
-
-    def extract_status_code(self, response):
-        """Extract HTTP status code from response"""
-        try:
-            if isinstance(response, str):
-                first_line = response.split('\n')[0]
-            else:
-                # If bytes, decode first line
-                first_line = response.split(b'\n')[0].decode('utf-8', errors='ignore')
-            
-            if 'HTTP/' in first_line:
-                parts = first_line.split()
-                if len(parts) >= 2:
-                    return int(parts[1])
-        except:
-            pass
-        return 0
-
-    def parse_request(self, request):
-        """Parse HTTP request"""
-        try:
-            lines = request.splitlines()
-            if len(lines) == 0:
-                return None, None, None, False
-            
-            # Parse request line
-            request_line = lines[0].strip()
-            parts = request_line.split()
-            if len(parts) < 2:
-                return None, None, None, False
-            
-            method = parts[0].upper()
-            path = unquote(parts[1])  # URL decode
-            version = parts[2] if len(parts) == 3 else "HTTP/1.1"
-            
-            # Parse headers
-            headers = {}
-            keep_alive = False
-            
-            for line in lines[1:]:
-                if ':' in line:
-                    key, value = line.split(':', 1)
-                    headers[key.strip().lower()] = value.strip()
-            
-            # Determine keep-alive
-            if version == "HTTP/1.1":
-                # HTTP/1.1 defaults to persistent
-                keep_alive = headers.get('connection', '').lower() != 'close'
-            else:
-                # HTTP/1.0 defaults to non-persistent
-                keep_alive = headers.get('connection', '').lower() == 'keep-alive'
-            
-            return method, path, headers, keep_alive
-            
-        except Exception as e:
-            print(f"Parse error: {e}")
-            return None, None, None, False
-
-    def process_request(self, method, path, headers, keep_alive):
-        """Process HTTP request and generate response"""
-        
-        # Security: Prevent directory traversal
-        safe_path = os.path.normpath(path).lstrip('/')
-        if '..' in path or safe_path.startswith('..'):
-            return self.generate_error_response(403, "Forbidden", keep_alive)
-        
-        # Handle root path
-        if path == '/' or path == '':
-            safe_path = 'index.html'
-        
-        file_path = os.path.join(self.root, safe_path)
-        
-        # Check if file exists
-        if not os.path.exists(file_path):
-            return self.generate_error_response(404, "File Not Found", keep_alive)
-        
-        # Check if it's a file (not directory)
-        if os.path.isdir(file_path):
-            return self.generate_error_response(403, "Forbidden", keep_alive)
-        
-        # Check if method is allowed
-        if method not in ['GET', 'HEAD']:
-            return self.generate_error_response(405, "Method Not Allowed", keep_alive)
-        
-        # Get file stats
-        file_stat = os.stat(file_path)
-        last_modified = datetime.fromtimestamp(file_stat.st_mtime)
-        content_length = file_stat.st_size
-        
-        # Determine MIME type
-        content_type = mimetypes.guess_type(file_path)[0] or 'application/octet-stream'
-        
-        # Check If-Modified-Since header for 304 response
-        if 'if-modified-since' in headers:
-            try:
-                # Parse If-Modified-Since header
-                ims_str = headers['if-modified-since']
-                # Handle different date formats
-                try:
-                    ims_time = datetime.strptime(ims_str, '%a, %d %b %Y %H:%M:%S %Z')
-                except:
-                    ims_time = datetime.strptime(ims_str, '%a, %d %b %Y %H:%M:%S')
-                
-                # If file hasn't been modified, return 304
-                if last_modified <= ims_time:
-                    return self.generate_304_response(keep_alive)
-            except Exception as e:
-                print(f"Error parsing If-Modified-Since: {e}")
-        
-        # Read file content
-        try:
-            with open(file_path, 'rb') as f:
-                file_content = f.read()
-        except Exception as e:
-            print(f"Error reading file: {e}")
-            return self.generate_error_response(403, "Forbidden", keep_alive)
-        
-        # Generate response
-        response = self.generate_response(
-            status_code=200,
-            status_text="OK",
-            headers={
-                'Content-Type': content_type,
-                'Content-Length': str(content_length),
-                'Last-Modified': last_modified.strftime('%a, %d %b %Y %H:%M:%S GMT'),
-                'Cache-Control': 'no-cache'
-            },
-            body=file_content if method == 'GET' else None,
-            keep_alive=keep_alive
-        )
-        
-        return response
-
-    def generate_response(self, status_code, status_text, headers, body=None, keep_alive=True):
-        """Generate HTTP response (handles both text and binary)"""
-        
-        # Build the header section as string
-        header_section = f"HTTP/1.1 {status_code} {status_text}\r\n"
-        
-        # Add headers
-        for key, value in headers.items():
-            header_section += f"{key}: {value}\r\n"
-        
-        # Add connection header
-        if keep_alive:
-            header_section += f"Connection: keep-alive\r\n"
-            header_section += f"Keep-Alive: timeout=5, max=100\r\n"
-        else:
-            header_section += f"Connection: close\r\n"
-        
-        header_section += f"Server: Python-Web-Server/1.0\r\n"
-        header_section += f"Date: {datetime.now().strftime('%a, %d %b %Y %H:%M:%S GMT')}\r\n"
-        header_section += f"\r\n"
-        
-        # Combine headers and body
-        if body is None:
-            # HEAD request or no body
-            return header_section
-        elif isinstance(body, bytes):
-            # Binary body (images, etc.)
-            return header_section.encode() + body
-        else:
-            # Text body
-            return header_section + body
-
-    def generate_error_response(self, status_code, status_text, keep_alive):
-        """Generate error response with HTML body"""
-        error_pages = {
-            400: "Bad Request - Malformed request syntax",
-            403: "Forbidden - Access denied",
-            404: "File Not Found",
-            405: "Method Not Allowed"
-        }
-        
-        error_message = error_pages.get(status_code, status_text)
-        
-        body = f"""<!DOCTYPE html>
-<html>
-<head><title>{status_code} {status_text}</title></head>
-<body>
-    <h1>{status_code} {status_text}</h1>
-    <p>{error_message}</p>
-    <hr>
-    <em>Python Web Server</em>
-</body>
-</html>"""
-        
-        headers = {
-            'Content-Type': 'text/html',
-            'Content-Length': str(len(body))
-        }
-        
-        return self.generate_response(status_code, status_text, headers, body, keep_alive)
-
-    def generate_304_response(self, keep_alive):
-        """Generate 304 Not Modified response"""
-        response = f"HTTP/1.1 304 Not Modified\r\n"
-        
-        if keep_alive:
-            response += f"Connection: keep-alive\r\n"
-        else:
-            response += f"Connection: close\r\n"
-        
-        response += f"Server: Python-Web-Server/1.0\r\n"
-        response += f"Date: {datetime.now().strftime('%a, %d %b %Y %H:%M:%S GMT')}\r\n"
-        response += f"\r\n"
-        
-        return response
-
-    def write_to_log(self, addr, method, path, status_code, request, response):
-        """Write complete log entry"""
-        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        
-        try:
-            # Write to detailed log
-            with open("server.log", "a", encoding='utf-8') as log_file:
-                log_file.write(f"\n{'='*80}\n")
-                log_file.write(f"TIMESTAMP: {timestamp}\n")
-                log_file.write(f"CLIENT: {addr[0]}:{addr[1]}\n")
-                log_file.write(f"REQUEST: {method} {path}\n")
-                log_file.write(f"STATUS: {status_code}\n")
-                log_file.write(f"{'-'*40}\n")
-                log_file.write(f"REQUEST HEADERS:\n")
-                
-                # Write request first line and headers
-                request_lines = request.split('\n')[:15]  # First 15 lines
-                for line in request_lines:
-                    if line.strip():
-                        log_file.write(f"  {line}\n")
-                
-                log_file.write(f"{'-'*40}\n")
-                log_file.write(f"RESPONSE HEADERS:\n")
-                
-                # Write response headers
-                if isinstance(response, str):
-                    response_lines = response.split('\n')[:10]
-                else:
-                    response_str = response[:1024].decode('utf-8', errors='ignore')
-                    response_lines = response_str.split('\n')[:10]
-                
-                for line in response_lines:
-                    if line.strip():
-                        log_file.write(f"  {line}\n")
-                
-                log_file.write(f"{'='*80}\n")
-            
-            # Write to summary log
-            with open("server_summary.log", "a", encoding='utf-8') as summary_file:
-                summary_file.write(f"{timestamp} | {addr[0]}:{addr[1]} | {method} {path} | Status: {status_code}\n")
-            
-            # Print to console that logging happened
-            print(f"  ✓ Logged: {method} {path} -> {status_code}")
-            
-        except Exception as e:
-            print(f"  ✗ Error writing to log: {e}")
-
-    def start(self):
-        """Start the server"""
         print(f"\n{'='*70}")
         print(f"Web Server Configuration:")
         print(f"  Host: {self.host}")
         print(f"  Port: {self.port}")
-        print(f"  Root: {os.path.abspath(self.root)}")
-        print(f"  Threads: Multi-threaded")
-        print(f"  Methods: GET, HEAD")
-        print(f"  Connection: Persistent (keep-alive) and Non-persistent")
+        print(f"  Root: {self.root}")
         print(f"{'='*70}\n")
-        print("Logging to: server.log and server_summary.log")
-        print("Server started. Press Ctrl+C to stop.\n")
-        
+
+    def _create_sample_files(self):
+        """
+        _summary_: Create default HTML, text, and a future‑dated file for testing.
+                   Called only when the web root directory is empty.
+                   Does not create any image files; users must supply their own.
+
+        _param_: None
+        _return_: None
+        """
+        with open(os.path.join(self.root, 'index.html'), 'w') as f:
+            f.write("""<!DOCTYPE html>
+<html><head><title>Python Web Server</title></head>
+<body><h1>Multi-Threaded Web Server</h1></body>
+</html>""")
+        with open(os.path.join(self.root, 'test.txt'), 'w') as f:
+            f.write("This is a test text file.\nCreated: " +
+                    datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+        future_time = time.time() + 86400 * 365
+        with open(os.path.join(self.root, 'future.txt'), 'w') as f:
+            f.write("This file has a future modification date.")
+        os.utime(os.path.join(self.root, 'future.txt'), (future_time, future_time))
+        print(f"Sample files created in {self.root}")
+
+    def handle_client(self, client_socket, addr):
+        """
+        _summary_: Handle a single client connection (may be persistent).
+                   Runs in its own thread. Reads HTTP requests repeatedly
+                   until the client closes or the server decides to close.
+
+        _param_: client_socket (socket): The connected client socket.
+        _param_: addr (tuple): Client address (ip, port).
+        _return_: None
+        """
+        print(f"\n[+] Connection from {addr[0]}:{addr[1]}")
+        try:
+            client_socket.settimeout(5)
+            while True:
+                try:
+                    data = client_socket.recv(4096)
+                    if not data:
+                        break
+                    request = data.decode('utf-8', errors='ignore')
+                    method, path, headers, keep_alive = self._parse_request(request)
+
+                    if method is None:
+                        response = self._error_response(400, "Bad Request", keep_alive)
+                        self._send_response(client_socket, response)
+                        client_socket.setsockopt(s.SOL_SOCKET, s.SO_LINGER,
+                                                 struct.pack('ii', 1, 0))
+                        client_socket.close()
+                        return
+
+                    self._log(addr, method, path, headers)
+                    response = self._process_request(method, path, headers, keep_alive)
+                    self._send_response(client_socket, response)
+
+                    if not keep_alive:
+                        print(f"  Closing connection (non-persistent)")
+                        client_socket.setsockopt(s.SOL_SOCKET, s.SO_LINGER,
+                                                 struct.pack('ii', 1, 0))
+                        client_socket.close()
+                        return
+                except s.timeout:
+                    break
+                except Exception as e:
+                    print(f"  Error: {e}")
+                    break
+        finally:
+            client_socket.close()
+            print(f"[-] Connection closed from {addr[0]}:{addr[1]}")
+
+    def _parse_request(self, request):
+        """
+        _summary_: Parse an HTTP request string into its components.
+
+        _param_: request (str): Raw HTTP request.
+        _return_: tuple: (method, path, headers_dict, keep_alive_flag)
+                 If the request is malformed, returns (None, None, None, False).
+        """
+        try:
+            lines = request.splitlines()
+            if not lines:
+                return None, None, None, False
+            request_line = lines[0].strip()
+            parts = request_line.split()
+            if len(parts) != 3:
+                return None, None, None, False
+            method = parts[0].upper()
+            path = unquote(parts[1])
+            version = parts[2]
+            if not version.startswith('HTTP/'):
+                return None, None, None, False
+
+            headers = {}
+            for line in lines[1:]:
+                if ':' in line:
+                    k, v = line.split(':', 1)
+                    headers[k.strip().lower()] = v.strip()
+
+            conn = headers.get('connection', '').lower()
+            if version == "HTTP/1.1":
+                keep_alive = conn != 'close'
+            else:
+                keep_alive = conn == 'keep-alive'
+            return method, path, headers, keep_alive
+        except Exception:
+            return None, None, None, False
+
+    def _process_request(self, method, path, headers, keep_alive):
+        """
+        _summary_: Process a validated HTTP request and generate the appropriate response.
+
+        _param_: method (str): 'GET' or 'HEAD'.
+        _param_: path (str): Requested URL path (already URL‑decoded).
+        _param_: headers (dict): Request headers (keys in lower case).
+        _param_: keep_alive (bool): Whether the connection should stay open.
+        _return_: str or bytes: The complete HTTP response (headers + optional body).
+        """
+        if '..' in path or path.startswith('/..'):
+            return self._error_response(403, "Forbidden", keep_alive)
+
+        if path == '/' or path == '':
+            rel_path = 'index.html'
+        else:
+            rel_path = path.lstrip('/')
+        file_path = os.path.normpath(os.path.join(self.root, rel_path))
+        if not file_path.startswith(self.root):
+            return self._error_response(403, "Forbidden", keep_alive)
+
+        if not os.path.exists(file_path):
+            return self._error_response(404, "File Not Found", keep_alive)
+        if os.path.isdir(file_path):
+            return self._error_response(403, "Forbidden", keep_alive)
+
+        if method not in ('GET', 'HEAD'):
+            return self._error_response(405, "Method Not Allowed", keep_alive)
+
+        stat = os.stat(file_path)
+        last_modified = datetime.fromtimestamp(stat.st_mtime)
+        content_length = stat.st_size
+        content_type = mimetypes.guess_type(file_path)[0] or 'application/octet-stream'
+
+        if 'if-modified-since' in headers:
+            try:
+                ims_str = headers['if-modified-since']
+                ims_tuple = email.utils.parsedate_tz(ims_str)
+                if ims_tuple:
+                    ims = datetime.fromtimestamp(email.utils.mktime_tz(ims_tuple))
+                    if last_modified <= ims:
+                        return self._not_modified_response(keep_alive)
+            except Exception:
+                pass
+
+        body = None
+        if method == 'GET':
+            with open(file_path, 'rb') as f:
+                body = f.read()
+
+        headers_dict = {
+            'Content-Type': content_type,
+            'Content-Length': str(content_length),
+            'Last-Modified': last_modified.strftime('%a, %d %b %Y %H:%M:%S GMT'),
+            'Cache-Control': 'no-cache'
+        }
+        return self._build_response(200, "OK", headers_dict, body, keep_alive)
+
+    def _build_response(self, code, text, headers, body, keep_alive):
+        """
+        _summary_: Construct a full HTTP response (status line, headers, optional body).
+
+        _param_: code (int): HTTP status code (e.g., 200).
+        _param_: text (str): Reason phrase (e.g., 'OK').
+        _param_: headers (dict): Response headers (key → value).
+        _param_: body (str or bytes or None): Response body (None for HEAD or 304).
+        _param_: keep_alive (bool): Whether the connection should stay open.
+        _return_: str or bytes: The complete HTTP response.
+        """
+        resp = f"HTTP/1.1 {code} {text}\r\n"
+        for k, v in headers.items():
+            resp += f"{k}: {v}\r\n"
+        if keep_alive:
+            resp += "Connection: keep-alive\r\n"
+            resp += "Keep-Alive: timeout=5, max=100\r\n"
+        else:
+            resp += "Connection: close\r\n"
+        resp += f"Server: Python-MultiThread/1.0\r\n"
+        resp += f"Date: {datetime.now().strftime('%a, %d %b %Y %H:%M:%S GMT')}\r\n"
+        resp += "\r\n"
+
+        if body is None:
+            return resp
+        elif isinstance(body, bytes):
+            return resp.encode() + body
+        else:
+            return resp + body
+
+    def _error_response(self, code, text, keep_alive):
+        """
+        _summary_: Generate an error response with a simple HTML body.
+
+        _param_: code (int): HTTP status code (400, 403, 404, 405).
+        _param_: text (str): Reason phrase (e.g., 'Bad Request').
+        _param_: keep_alive (bool): Whether the connection should stay open.
+        _return_: str: The complete HTTP error response.
+        """
+        body = f"""<!DOCTYPE html>
+<html><head><title>{code} {text}</title></head>
+<body><h1>{code} {text}</h1><hr><em>Python Web Server</em></body>
+</html>"""
+        headers = {'Content-Type': 'text/html', 'Content-Length': str(len(body))}
+        return self._build_response(code, text, headers, body, keep_alive)
+
+    def _not_modified_response(self, keep_alive):
+        """
+        _summary_: Generate a 304 Not Modified response (no body).
+
+        _param_: keep_alive (bool): Whether the connection should stay open.
+        _return_: str: The 304 response.
+        """
+        resp = "HTTP/1.1 304 Not Modified\r\n"
+        if keep_alive:
+            resp += "Connection: keep-alive\r\n"
+        else:
+            resp += "Connection: close\r\n"
+        resp += f"Server: Python-MultiThread/1.0\r\n"
+        resp += f"Date: {datetime.now().strftime('%a, %d %b %Y %H:%M:%S GMT')}\r\n"
+        resp += "\r\n"
+        return resp
+
+    def _send_response(self, sock, response):
+        """
+        _summary_: Send a response (string or bytes) over a socket.
+
+        _param_: sock (socket): The client socket.
+        _param_: response (str or bytes): The HTTP response to send.
+        _return_: None
+        """
+        if isinstance(response, str):
+            sock.sendall(response.encode())
+        else:
+            sock.sendall(response)
+
+    def _log(self, addr, method, path, headers):
+        """
+        _summary_: Log a client request to server.log.
+
+        _param_: addr (tuple): Client (ip, port).
+        _param_: method (str): HTTP method.
+        _param_: path (str): Requested URL path.
+        _param_: headers (dict): Request headers (unused in this simple log).
+        _return_: None
+        """
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        with open("server.log", "a") as f:
+            f.write(f"{timestamp} | {addr[0]}:{addr[1]} | {method} {path}\n")
+
+    def start(self):
+        """
+        _summary_: Start the web server: accept incoming connections and spawn threads.
+                   This method runs the main loop and never returns (until interrupted).
+
+        _param_: None
+        _return_: None
+        """
+        print(f"Server listening on {self.host}:{self.port}")
+        print("Press Ctrl+C to stop\n")
         try:
             while True:
-                client_socket, addr = self.server_socket.accept()
-                client_thread = t.Thread(target=self.handle_client, args=(client_socket, addr))
-                client_thread.daemon = True
-                client_thread.start()
-                print(f"[+] Thread started for {addr}")
-                
+                client_sock, addr = self.server_socket.accept()
+                t.Thread(target=self.handle_client, args=(client_sock, addr),
+                         daemon=True).start()
         except KeyboardInterrupt:
-            print("\n\n[!] Shutting down server...")
+            print("\nShutting down...")
         finally:
             self.server_socket.close()
-            print("[!] Server stopped")
 
-def main():
-    server = WebServer(SERVER_HOST, SERVER_PORT, WEB_ROOT)
-    server.start()
 
 if __name__ == "__main__":
-    main()
+    server = WebServer(SERVER_HOST, SERVER_PORT, WEB_ROOT)
+    server.start()

@@ -1,105 +1,38 @@
+Server started at 2026-04-18 01:54:21.688966
 
-================================================================================
-TIMESTAMP: 2026-03-26 23:45:55
-CLIENT: 127.0.0.1:61564
-REQUEST: GET /
-STATUS: 200
-----------------------------------------
-REQUEST HEADERS:
-  GET / HTTP/1.1
-  Host: localhost:8000
-  Connection: keep-alive
-  Cache-Control: max-age=0
-  sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
-  sec-ch-ua-mobile: ?0
-  sec-ch-ua-platform: "Windows"
-  Upgrade-Insecure-Requests: 1
-  User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-  Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-  Sec-Fetch-Site: none
-  Sec-Fetch-Mode: navigate
-  Sec-Fetch-User: ?1
-  Sec-Fetch-Dest: document
-  Accept-Encoding: gzip, deflate, br, zstd
-----------------------------------------
-RESPONSE HEADERS:
-  HTTP/1.1 200 OK
-  Content-Type: text/html
-  Content-Length: 856
-  Last-Modified: Thu, 26 Mar 2026 22:41:08 GMT
-  Cache-Control: no-cache
-  Connection: keep-alive
-  Keep-Alive: timeout=5, max=100
-  Server: Python-Web-Server/1.0
-  Date: Thu, 26 Mar 2026 23:45:55 GMT
-================================================================================
-
-================================================================================
-TIMESTAMP: 2026-03-26 23:45:56
-CLIENT: 127.0.0.1:61564
-REQUEST: GET /test.txt
-STATUS: 404
-----------------------------------------
-REQUEST HEADERS:
-  GET /test.txt HTTP/1.1
-  Host: localhost:8000
-  Connection: keep-alive
-  sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
-  sec-ch-ua-mobile: ?0
-  sec-ch-ua-platform: "Windows"
-  Upgrade-Insecure-Requests: 1
-  User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-  Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-  Sec-Fetch-Site: same-origin
-  Sec-Fetch-Mode: navigate
-  Sec-Fetch-User: ?1
-  Sec-Fetch-Dest: document
-  Referer: http://localhost:8000/
-  Accept-Encoding: gzip, deflate, br, zstd
-----------------------------------------
-RESPONSE HEADERS:
-  HTTP/1.1 404 File Not Found
-  Content-Type: text/html
-  Content-Length: 190
-  Connection: keep-alive
-  Keep-Alive: timeout=5, max=100
-  Server: Python-Web-Server/1.0
-  Date: Thu, 26 Mar 2026 23:45:56 GMT
-  <!DOCTYPE html>
-  <html>
-================================================================================
-
-================================================================================
-TIMESTAMP: 2026-03-26 23:46:55
-CLIENT: 127.0.0.1:61577
-REQUEST: GET /test.txt
-STATUS: 404
-----------------------------------------
-REQUEST HEADERS:
-  GET /test.txt HTTP/1.1
-  Host: localhost:8000
-  Connection: keep-alive
-  sec-ch-ua: "Chromium";v="146", "Not-A.Brand";v="24", "Google Chrome";v="146"
-  sec-ch-ua-mobile: ?0
-  sec-ch-ua-platform: "Windows"
-  Upgrade-Insecure-Requests: 1
-  User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36
-  Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-  Sec-Fetch-Site: same-origin
-  Sec-Fetch-Mode: navigate
-  Sec-Fetch-User: ?1
-  Sec-Fetch-Dest: document
-  Referer: http://localhost:8000/
-  Accept-Encoding: gzip, deflate, br, zstd
-----------------------------------------
-RESPONSE HEADERS:
-  HTTP/1.1 404 File Not Found
-  Content-Type: text/html
-  Content-Length: 190
-  Connection: keep-alive
-  Keep-Alive: timeout=5, max=100
-  Server: Python-Web-Server/1.0
-  Date: Thu, 26 Mar 2026 23:46:55 GMT
-  <!DOCTYPE html>
-  <html>
-================================================================================
+2026-04-18 01:54:36 | 127.0.0.1:54339 | GET /test.txt
+2026-04-18 01:54:36 | 127.0.0.1:54340 | GET /test.jpg
+2026-04-18 01:54:36 | 127.0.0.1:54341 | GET /sample.jpg
+2026-04-18 01:54:36 | 127.0.0.1:54342 | HEAD /test.txt
+2026-04-18 01:54:36 | 127.0.0.1:54343 | GET /missing.html
+2026-04-18 01:54:36 | 127.0.0.1:54344 | GET /../etc/passwd
+2026-04-18 01:54:36 | 127.0.0.1:54345 | HEAD /future.txt
+2026-04-18 01:54:36 | 127.0.0.1:54346 | GET /future.txt
+2026-04-18 01:54:36 | 127.0.0.1:54347 | HEAD /test.txt
+2026-04-18 01:54:36 | 127.0.0.1:54349 | GET /test.txt
+2026-04-18 01:54:36 | 127.0.0.1:54349 | GET /index.html
+2026-04-18 01:54:36 | 127.0.0.1:54350 | GET /test.txt
+2026-04-18 01:55:40 | 127.0.0.1:54372 | GET /test.txt
+2026-04-18 01:55:43 | 127.0.0.1:54372 | GET /sample.jpg
+2026-04-18 01:55:55 | 127.0.0.1:54380 | GET /test.txt
+2026-04-18 01:55:57 | 127.0.0.1:54380 | GET /sample.jpg
+2026-04-18 01:56:05 | 127.0.0.1:54386 | GET /image.jpg
+2026-04-18 01:58:55 | 127.0.0.1:54414 | GET /sample.jpg
+2026-04-18 02:58:52 | 127.0.0.1:54761 | GET /
+2026-04-18 02:58:55 | 127.0.0.1:54761 | GET /test.txt
+2026-04-18 03:08:16 | 127.0.0.1:55058 | GET /test.txt
+2026-04-18 03:08:16 | 127.0.0.1:55059 | GET /test.jpg
+2026-04-18 03:08:16 | 127.0.0.1:55060 | GET /sample.jpg
+2026-04-18 03:08:16 | 127.0.0.1:55061 | HEAD /test.txt
+2026-04-18 03:08:16 | 127.0.0.1:55062 | GET /missing.html
+2026-04-18 03:08:16 | 127.0.0.1:55063 | GET /../etc/passwd
+2026-04-18 03:08:16 | 127.0.0.1:55064 | HEAD /future.txt
+2026-04-18 03:08:16 | 127.0.0.1:55065 | GET /future.txt
+2026-04-18 03:08:16 | 127.0.0.1:55066 | HEAD /test.txt
+2026-04-18 03:08:16 | 127.0.0.1:55068 | GET /test.txt
+2026-04-18 03:08:16 | 127.0.0.1:55068 | GET /index.html
+2026-04-18 03:08:16 | 127.0.0.1:55069 | GET /test.txt
+2026-04-18 03:29:24 | 127.0.0.1:55434 | GET /saa
+2026-04-18 03:29:41 | 127.0.0.1:55442 | GET /
+2026-04-18 03:30:28 | 127.0.0.1:55468 | GET /etc/passwd
+2026-04-18 03:30:48 | 127.0.0.1:55479 | GET /etc/passwd
